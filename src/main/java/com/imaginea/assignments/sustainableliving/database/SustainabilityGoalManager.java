@@ -1,4 +1,3 @@
 package com.imaginea.assignments.sustainableliving.database;
 
-public class SustainabilityGoalManager {
-}
+public class SustainabilityGoalManager {}
