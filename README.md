@@ -15,6 +15,7 @@ This is an attempt to simulate a sustainable home solution relating to usage of 
 * This is a going to be a Java-based application with no frontend.
 * It may be a simple console-based app or a simple REST-backed webservice.
 * There's no user authentication involved here. Inputs will probably be their userId, homeId, resourceIds, etc.,
+* All data are captured in a Mongodb instance. The collections are assumed to be created ahead of time, instead of the application manipulating it at runtime.
 
 # High-Level Design
 
@@ -27,6 +28,14 @@ The following are the main actors involved in this app.
 * Saving - Based on the Resources available and Goals set (above), calculate the Savings that could be achieved for given time frames.
 * SuggestedGoal - Goals that the app could suggest the users.
 * Reward - Represents the Rewards the users will gain for meeting their goals. Some rewards are SustainabilityScore, BadgesAchieved, Incentives.
+
+# Entity Design
+
+* User is a top-level entity and is assumed to have "one" Home instance for simplicity purposes.
+* Each Home can have multiple Resource entities.
+* Each Resource is an independent entity (because it can be owned by different homes/users)with some metadata like consumption (quantity), unit of consumption (litres, watts, etc.,) and other future attributes that could encapsulate more details on the resource.
+* Each Home will have a embeddable set of user-defined Goals and also app-suggested Goals.
+* Each Home will have its own embedded set of Rewards based on what they achieved.
 
 # Use Cases
 

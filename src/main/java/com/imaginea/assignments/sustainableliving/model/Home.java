@@ -1,0 +1,26 @@
+package com.imaginea.assignments.sustainableliving.model;
+
+import java.util.List;
+
+/**
+ * Represents a User's Home fitted with various energy resources consumed by the User and other
+ * meta-data to qualify in the context of Sustainable Living.
+ */
+public class Home {
+  private String name;
+  private Double sustainabilityScore;
+  private List<EnergyResource> resources;
+
+  public Home(String name, List<EnergyResource> resources) {
+    this.name = name;
+    this.resources = resources;
+  }
+
+  public Double getSustainabilityScore() {
+    return sustainabilityScore;
+  }
+
+  public void setSustainabilityScore(Double sustainabilityScore) {
+    this.sustainabilityScore = sustainabilityScore;
+  }
+}
