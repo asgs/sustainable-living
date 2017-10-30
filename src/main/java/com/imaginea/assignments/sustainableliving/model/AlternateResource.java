@@ -1,5 +1,8 @@
 package com.imaginea.assignments.sustainableliving.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AlternateResource implements EnergyResource {
   private AlternateEnergyResourceType type;
 

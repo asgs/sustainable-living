@@ -1,11 +1,14 @@
 package com.imaginea.assignments.sustainableliving.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 /**
  * Represents a User's Home fitted with various energy resources consumed by the User and other
  * meta-data to qualify in the context of Sustainable Living.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Home {
   private String name;
   private Double sustainabilityScore;
