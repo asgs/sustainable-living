@@ -1,5 +1,8 @@
 package com.imaginea.assignments.sustainableliving;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,6 +23,10 @@ public class EntryPoint {
 
   public static void main(String[] args) throws IOException {
     printWelcomeBanner();
+    handleUserInput();
+  }
+
+  private static void handleUserInput() throws IOException {
     BufferedReader inputStream = new BufferedReader(new InputStreamReader(System.in));
     String userInput = "";
     loop:
@@ -32,15 +39,17 @@ public class EntryPoint {
         System.err.println(INVALID_INPUT_ERROR_MESSAGE);
         continue;
       }
+      Injector injector = Guice.createInjector(new SlModule());
+      UserInputProcessor inputProcessor = injector.getInstance(UserInputProcessor.class);
       switch (choice) {
         case 1:
-          System.err.println(UNIMPLEMENTED_MESSAGE);
+          inputProcessor.handleUser();
           break;
         case 2:
-          System.err.println(UNIMPLEMENTED_MESSAGE);
+          inputProcessor.handleUserHome();
           break;
         case 3:
-          System.err.println(UNIMPLEMENTED_MESSAGE);
+          inputProcessor.handleGoals();
           break;
         case 4:
           System.err.println(UNIMPLEMENTED_MESSAGE);
