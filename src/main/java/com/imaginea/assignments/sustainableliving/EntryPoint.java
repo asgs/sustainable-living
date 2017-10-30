@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Entry point where all user requests will be received and delegated as appropriate. The following
- * options will be shown to the user.
+ * Entry point where all user requests will be received, processed and delegated as appropriate. The
+ * following options will be shown to the user.
  *
  * <p>1. Register a new user with their home details. 2. Track an existing user's energy
  * consumption. 3. Set an existing user's sustainability goals. 4. Evaluate an existing user's
@@ -66,8 +66,7 @@ public class EntryPoint {
     }
   }
 
-  private static User gatherUserDetails(BufferedReader reader) throws
-          IOException {
+  private static User gatherUserDetails(BufferedReader reader) throws IOException {
     System.out.println("Enter your name.");
     User user = new User(UUID.randomUUID().toString(), reader.readLine());
     System.out.println("Enter your House name.");

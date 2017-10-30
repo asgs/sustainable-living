@@ -8,7 +8,7 @@ import org.bson.Document;
 public class MongoDbClient implements GenericDbClient {
 
   private MongoClient client;
-  private MongoDatabase database = client.getDatabase("test");
+  private MongoDatabase database;
   private SingleResultCallback<Void> insertCallback =
       (result, throwable) -> {
         if (throwable != null) {
@@ -20,6 +20,7 @@ public class MongoDbClient implements GenericDbClient {
 
   public MongoDbClient(MongoClientSettings settings) {
     client = MongoClients.create(settings);
+    database = client.getDatabase("test");
   }
 
   public void insertContent(String json, String collectionName) {

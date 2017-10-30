@@ -11,9 +11,9 @@ import java.util.Properties;
 /** Factory class to instantiate the Database clients for various database types in use. */
 public class DatabaseClients {
 
-  private MongoDbClient buildMongoClient() throws IOException {
+  public static MongoDbClient buildMongoClient() throws IOException {
     Properties mongoDbProperties = new Properties();
-    mongoDbProperties.load(this.getClass().getResourceAsStream("/mongodb.properties"));
+    mongoDbProperties.load(DatabaseClients.class.getResourceAsStream("/mongodb" + ".properties"));
     ClusterSettings clusterSettings =
         ClusterSettings.builder()
             .hosts(

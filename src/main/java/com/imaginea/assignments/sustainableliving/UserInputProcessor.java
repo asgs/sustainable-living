@@ -6,6 +6,8 @@ import com.imaginea.assignments.sustainableliving.database.SustainabilityGoalMan
 import com.imaginea.assignments.sustainableliving.database.UserManager;
 import com.imaginea.assignments.sustainableliving.model.User;
 
+import java.io.IOException;
+
 public class UserInputProcessor {
 
   private UserManager userManager;
@@ -22,7 +24,7 @@ public class UserInputProcessor {
     this.sustainabilityGoalManager = sustainabilityGoalManager;
   }
 
-  public void handleUser(User user) {
+  public void handleUser(User user) throws IOException {
     userManager.handleUser(user);
   }
 
