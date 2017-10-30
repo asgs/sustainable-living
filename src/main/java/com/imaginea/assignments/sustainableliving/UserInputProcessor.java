@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import com.imaginea.assignments.sustainableliving.database.HomeManager;
 import com.imaginea.assignments.sustainableliving.database.SustainabilityGoalManager;
 import com.imaginea.assignments.sustainableliving.database.UserManager;
+import com.imaginea.assignments.sustainableliving.model.User;
 
 public class UserInputProcessor {
 
@@ -21,8 +22,8 @@ public class UserInputProcessor {
     this.sustainabilityGoalManager = sustainabilityGoalManager;
   }
 
-  public void handleUser() {
-    System.out.println("Dummy user handling implementation.");
+  public void handleUser(User user) {
+    userManager.handleUser(user);
   }
 
   public void handleUserHome() {

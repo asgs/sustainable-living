@@ -2,10 +2,14 @@ package com.imaginea.assignments.sustainableliving;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.imaginea.assignments.sustainableliving.model.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Entry point where all user requests will be received and delegated as appropriate. The following
@@ -39,11 +43,10 @@ public class EntryPoint {
         System.err.println(INVALID_INPUT_ERROR_MESSAGE);
         continue;
       }
-      Injector injector = Guice.createInjector(new SlModule());
-      UserInputProcessor inputProcessor = injector.getInstance(UserInputProcessor.class);
+      UserInputProcessor inputProcessor = getInputProcessorInstance();
       switch (choice) {
         case 1:
-          inputProcessor.handleUser();
+          inputProcessor.handleUser(gatherUserDetails(inputStream));
           break;
         case 2:
           inputProcessor.handleUserHome();
@@ -63,6 +66,44 @@ public class EntryPoint {
     }
   }
 
+  private static User gatherUserDetails(BufferedReader reader) throws
+          IOException {
+    System.out.println("Enter your name.");
+    User user = new User(UUID.randomUUID().toString(), reader.readLine());
+    System.out.println("Enter your House name.");
+    String houseName = reader.readLine();
+    System.out.println("Enter the number of Energy resources in use at Home");
+    Integer resourceCount = Integer.parseInt(reader.readLine());
+    System.out.println(
+        "For each of the resource, enter the type of the "
+            + "energy resource on its own line. For electricity, press 1; for "
+            + "LPG, press 2; for Water, press 3.");
+    int i = resourceCount;
+    List<EnergyResource> resources = new ArrayList<>();
+    while (i > 0) {
+      String type = reader.readLine();
+      switch (type) {
+        case "1":
+          resources.add(new ElectricityResource());
+          i--;
+          break;
+        case "2":
+          resources.add(new LpgResource());
+          i--;
+          break;
+        case "3":
+          resources.add(new WaterResource());
+          i--;
+          break;
+        default:
+          System.err.println("Incorrect resource type! Try again, please.");
+      }
+    }
+    Home home = new Home(houseName, resources);
+    user.setHome(home);
+    return user;
+  }
+
   private static void printWelcomeBanner() {
     System.out.println("Hello! Welcome to Sustainable Living App!");
     System.out.println(
@@ -72,5 +113,10 @@ public class EntryPoint {
             + "4. Evaluate an existing user's\n"
             + " * energy consumption against their goals and provide incentives.");
     System.out.println("Press 5 to quit.");
+  }
+
+  private static UserInputProcessor getInputProcessorInstance() {
+    Injector injector = Guice.createInjector(new SlModule());
+    return injector.getInstance(UserInputProcessor.class);
   }
 }

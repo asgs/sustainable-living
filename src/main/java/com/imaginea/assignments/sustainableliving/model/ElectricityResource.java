@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class ElectricityResource implements EnergyResource {
 
   public ResourceConsumptionUnit getUnit() {
-    return null;
+    return ResourceConsumptionUnit.WATTS;
   }
 
   public Double getConsumptionDuring(long startTimeInEpoch, long endTimeInEpoch) {
