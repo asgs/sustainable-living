@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 /**
  * Entry point where all user requests will be received and delegated as appropriate. The following
- * capabilities will be shown to the user.
+ * options will be shown to the user.
  *
  * <p>1. Register a new user with their home details. 2. Track an existing user's energy
  * consumption. 3. Set an existing user's sustainability goals. 4. Evaluate an existing user's

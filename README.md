@@ -13,7 +13,8 @@ This is an attempt to simulate a sustainable home solution relating to usage of 
 # Assumptions
 
 * This is a going to be a Java-based application with no frontend.
-* It may be a simple console-based app or a simple REST-backed webservice.
+* It will be a simple console-based app to interact with the end users.
+* A simple interface to record the consumption from third-party data providers.
 * There's no user authentication involved here. Inputs will probably be their userId, homeId, resourceIds, etc.,
 * All data are captured in a Mongodb instance. The collections are assumed to be created ahead of time, instead of the application manipulating it at runtime.
 
