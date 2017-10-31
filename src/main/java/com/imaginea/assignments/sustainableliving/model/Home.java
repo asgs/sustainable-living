@@ -25,6 +25,10 @@ public class Home {
     return sustainabilityScore;
   }
 
+  public void setSustainabilityScore(Double sustainabilityScore) {
+    this.sustainabilityScore = sustainabilityScore;
+  }
+
   public String getName() {
     return name;
   }
@@ -39,9 +43,5 @@ public class Home {
 
   public void setResources(List<EnergyResource> resources) {
     this.resources = resources;
-  }
-
-  public void setSustainabilityScore(Double sustainabilityScore) {
-    this.sustainabilityScore = sustainabilityScore;
   }
 }

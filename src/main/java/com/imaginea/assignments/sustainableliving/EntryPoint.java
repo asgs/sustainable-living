@@ -32,6 +32,17 @@ public class EntryPoint {
     app.handleUserInput();
   }
 
+  private static void printWelcomeBanner() {
+    System.out.println("Hello! Welcome to Sustainable Living App!");
+    System.out.println(
+        "Please press to 1. Register as a new user with their home "
+            + "details. 2. Track an existing user's energy\n"
+            + " * consumption. 3. Set an existing user's sustainability goals. "
+            + "4. Evaluate an existing user's\n"
+            + " * energy consumption against their goals and provide incentives.");
+    System.out.println("Press 5 to quit.");
+  }
+
   private void handleUserInput() throws IOException {
     BufferedReader inputStream = new BufferedReader(new InputStreamReader(System.in));
     String userInput = "";
@@ -103,17 +114,6 @@ public class EntryPoint {
         "Please enter your user id. we'll pull the energy "
             + "consumption report for your house shortly.");
     return reader.readLine();
-  }
-
-  private static void printWelcomeBanner() {
-    System.out.println("Hello! Welcome to Sustainable Living App!");
-    System.out.println(
-        "Please press to 1. Register as a new user with their home "
-            + "details. 2. Track an existing user's energy\n"
-            + " * consumption. 3. Set an existing user's sustainability goals. "
-            + "4. Evaluate an existing user's\n"
-            + " * energy consumption against their goals and provide incentives.");
-    System.out.println("Press 5 to quit.");
   }
 
   private UserInputProcessor getInputProcessorInstance() {
