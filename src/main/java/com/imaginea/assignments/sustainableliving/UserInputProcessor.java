@@ -28,7 +28,7 @@ public class UserInputProcessor {
     userManager.handleUser(user);
   }
 
-  public void handleUserHome() {
+  public void generateHomeEnergyConsumptionReport() {
     System.out.println("Dummy userHome handling implementation.");
   }
 

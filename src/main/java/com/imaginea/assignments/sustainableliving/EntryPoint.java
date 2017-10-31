@@ -44,7 +44,7 @@ public class EntryPoint {
           inputProcessor.handleUser(buildUserDetails(inputStream));
           break;
         case "2":
-          inputProcessor.handleUserHome();
+          inputProcessor.generateHomeEnergyConsumptionReport();
           break;
         case "3":
           inputProcessor.handleGoals();

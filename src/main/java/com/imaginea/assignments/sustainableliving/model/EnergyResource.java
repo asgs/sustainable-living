@@ -19,12 +19,42 @@ public interface EnergyResource {
    * @param endTimeInEpoch
    * @return Amount consumed.
    */
-  Double getConsumptionDuring(long startTimeInEpoch, long endTimeInEpoch);
+  ResourceConsumption getConsumptionDuring(long startTimeInEpoch, long endTimeInEpoch);
 
   /**
    * How much of the resource was consumed till date?
    *
    * @return Amount consumed.
    */
-  Double getConsumptionDuring();
+  ResourceConsumption getConsumptionDuring();
+
+  class ResourceConsumption {
+    private Double amount;
+    private long startTimeInEpochMillis;
+    private long endTimeInEpochMillis;
+
+    public Double getAmount() {
+      return amount;
+    }
+
+    public void setAmount(Double amount) {
+      this.amount = amount;
+    }
+
+    public long getStartTimeInEpochMillis() {
+      return startTimeInEpochMillis;
+    }
+
+    public void setStartTimeInEpochMillis(long startTimeInEpochMillis) {
+      this.startTimeInEpochMillis = startTimeInEpochMillis;
+    }
+
+    public long getEndTimeInEpochMillis() {
+      return endTimeInEpochMillis;
+    }
+
+    public void setEndTimeInEpochMillis(long endTimeInEpochMillis) {
+      this.endTimeInEpochMillis = endTimeInEpochMillis;
+    }
+  }
 }

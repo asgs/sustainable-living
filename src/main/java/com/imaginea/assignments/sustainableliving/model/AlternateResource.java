@@ -10,15 +10,18 @@ public class AlternateResource implements EnergyResource {
     this.type = type;
   }
 
+  @Override
   public ResourceConsumptionUnit getUnit() {
     return null;
   }
 
-  public Double getConsumptionDuring(long startTimeInEpoch, long endTimeInEpoch) {
+  @Override
+  public ResourceConsumption getConsumptionDuring(long startTimeInEpoch, long endTimeInEpoch) {
     return null;
   }
 
-  public Double getConsumptionDuring() {
+  @Override
+  public ResourceConsumption getConsumptionDuring() {
     return null;
   }
 }

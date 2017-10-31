@@ -4,15 +4,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WaterResource implements EnergyResource {
+  @Override
   public ResourceConsumptionUnit getUnit() {
     return ResourceConsumptionUnit.LITRES;
   }
 
-  public Double getConsumptionDuring(long startTimeInEpoch, long endTimeInEpoch) {
+  @Override
+  public ResourceConsumption getConsumptionDuring(long startTimeInEpoch, long endTimeInEpoch) {
     return null;
   }
 
-  public Double getConsumptionDuring() {
+  @Override
+  public ResourceConsumption getConsumptionDuring() {
     return null;
   }
 }
