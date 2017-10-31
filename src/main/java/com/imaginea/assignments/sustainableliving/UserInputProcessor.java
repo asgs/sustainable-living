@@ -33,6 +33,6 @@ public class UserInputProcessor {
   }
 
   public void handleGoals() {
-    System.out.println("Dummy userGoals implementation.");
+    throw new UnsupportedOperationException();
   }
 }

@@ -25,6 +25,6 @@ public class EntryPointTest {
     System.setIn(inputStream);
     EntryPoint.main(null);
     // NFE is expected because option 1 requires a number from the stream
-    // which has already reached its end.
+    // which has already ended.
   }
 }
