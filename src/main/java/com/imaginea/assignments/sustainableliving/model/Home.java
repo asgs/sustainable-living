@@ -23,7 +23,24 @@ public class Home {
     return sustainabilityScore;
   }
 
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public List<EnergyResource> getResources() {
+    return resources;
+  }
+
+  public void setResources(List<EnergyResource> resources) {
+    this.resources = resources;
+  }
+
   public void setSustainabilityScore(Double sustainabilityScore) {
     this.sustainabilityScore = sustainabilityScore;
+
   }
 }

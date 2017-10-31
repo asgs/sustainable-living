@@ -24,41 +24,36 @@ public class EntryPoint {
   public static final String INVALID_INPUT_ERROR_MESSAGE =
       "Valid values are 1, 2, 3, 4 and 5. Try again, please.";
   public static final String UNIMPLEMENTED_MESSAGE = "Unimplemented yet.";
+  public static final String EXIT_MESSAGE = "Thank you! Quitting..";
 
   public static void main(String[] args) throws IOException {
     printWelcomeBanner();
-    handleUserInput();
+    EntryPoint app = new EntryPoint();
+    app.handleUserInput();
   }
 
-  private static void handleUserInput() throws IOException {
+  private void handleUserInput() throws IOException {
     BufferedReader inputStream = new BufferedReader(new InputStreamReader(System.in));
     String userInput = "";
     loop:
     while (userInput != null) {
       userInput = inputStream.readLine();
-      int choice;
-      try {
-        choice = Integer.parseInt(userInput);
-      } catch (NumberFormatException e) {
-        System.err.println(INVALID_INPUT_ERROR_MESSAGE);
-        continue;
-      }
       UserInputProcessor inputProcessor = getInputProcessorInstance();
-      switch (choice) {
-        case 1:
-          inputProcessor.handleUser(gatherUserDetails(inputStream));
+      switch (userInput) {
+        case "1":
+          inputProcessor.handleUser(buildUserDetails(inputStream));
           break;
-        case 2:
+        case "2":
           inputProcessor.handleUserHome();
           break;
-        case 3:
+        case "3":
           inputProcessor.handleGoals();
           break;
-        case 4:
+        case "4":
           System.err.println(UNIMPLEMENTED_MESSAGE);
           break;
-        case 5:
-          System.out.println("Thank you! Quitting..");
+        case "5":
+          System.out.println(EXIT_MESSAGE);
           break loop;
         default:
           System.err.println(INVALID_INPUT_ERROR_MESSAGE);
@@ -66,7 +61,7 @@ public class EntryPoint {
     }
   }
 
-  private static User gatherUserDetails(BufferedReader reader) throws IOException {
+  private User buildUserDetails(BufferedReader reader) throws IOException {
     System.out.println("Enter your name.");
     User user = new User(UUID.randomUUID().toString(), reader.readLine());
     System.out.println("Enter your House name.");
@@ -114,7 +109,7 @@ public class EntryPoint {
     System.out.println("Press 5 to quit.");
   }
 
-  private static UserInputProcessor getInputProcessorInstance() {
+  private UserInputProcessor getInputProcessorInstance() {
     Injector injector = Guice.createInjector(new SlModule());
     return injector.getInstance(UserInputProcessor.class);
   }

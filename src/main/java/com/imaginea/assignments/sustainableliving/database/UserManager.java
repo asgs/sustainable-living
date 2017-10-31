@@ -9,15 +9,17 @@ import com.imaginea.assignments.sustainableliving.model.User;
 import java.io.IOException;
 
 public class UserManager {
+  public static final String USERS_COLLECTION = "users";
   private ObjectMapper objectMapper;
+  private MongoDbClient client;
 
   @Inject
-  public UserManager(ObjectMapper objectMapper) {
+  public UserManager(ObjectMapper objectMapper) throws IOException {
     this.objectMapper = objectMapper;
+    client = DatabaseClients.buildMongoClient();
   }
 
   public void handleUser(User user) throws IOException {
-    MongoDbClient client = DatabaseClients.buildMongoClient();
-    client.insertContent(objectMapper.writeValueAsString(user), "users");
+    client.insertContent(objectMapper.writeValueAsString(user), USERS_COLLECTION);
   }
 }
