@@ -5,18 +5,26 @@ import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-import static org.junit.Assert.assertTrue;
-
 public class EntryPointTest {
+
+  public static final String UTF_8 = "UTF-8";
 
   @Test
   public void testApp() throws IOException {
-    String userOptions = "1\n2\n3\n4\n5\n";
-    ByteArrayInputStream inputStream = new ByteArrayInputStream(userOptions.getBytes("UTF-8"));
+    String userOptions = "5\n";
+    ByteArrayInputStream inputStream = new ByteArrayInputStream(userOptions.getBytes(UTF_8));
     System.setIn(inputStream);
 
     EntryPoint.main(null);
-    assertTrue(inputStream.available() == 0);
-    System.setIn(System.in);
+  }
+
+  @Test(expected = NumberFormatException.class)
+  public void testAppWithError() throws IOException {
+    String userOptions = "1\n";
+    ByteArrayInputStream inputStream = new ByteArrayInputStream(userOptions.getBytes(UTF_8));
+    System.setIn(inputStream);
+    EntryPoint.main(null);
+    // NFE is expected because option 1 requires a number from the stream
+    // which has already reached its end.
   }
 }

@@ -3,7 +3,7 @@ package com.imaginea.assignments.sustainableliving.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AlternateResource implements EnergyResource {
+public class AlternateResource extends AbstractEnergyResource {
   private AlternateEnergyResourceType type;
 
   public AlternateResource(AlternateEnergyResourceType type) {
@@ -12,16 +12,6 @@ public class AlternateResource implements EnergyResource {
 
   @Override
   public ResourceConsumptionUnit getUnit() {
-    return null;
-  }
-
-  @Override
-  public ResourceConsumption getConsumptionDuring(long startTimeInEpoch, long endTimeInEpoch) {
-    return null;
-  }
-
-  @Override
-  public ResourceConsumption getConsumptionDuring() {
-    return null;
+    return type.getUnit();
   }
 }

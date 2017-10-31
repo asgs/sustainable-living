@@ -3,19 +3,9 @@ package com.imaginea.assignments.sustainableliving.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WaterResource implements EnergyResource {
+public class WaterResource extends AbstractEnergyResource {
   @Override
   public ResourceConsumptionUnit getUnit() {
     return ResourceConsumptionUnit.LITRES;
-  }
-
-  @Override
-  public ResourceConsumption getConsumptionDuring(long startTimeInEpoch, long endTimeInEpoch) {
-    return null;
-  }
-
-  @Override
-  public ResourceConsumption getConsumptionDuring() {
-    return null;
   }
 }

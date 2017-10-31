@@ -15,4 +15,8 @@ public enum AlternateEnergyResourceType {
   AlternateEnergyResourceType(ResourceConsumptionUnit unit) {
     this.unit = unit;
   }
+
+  public ResourceConsumptionUnit getUnit() {
+    return unit;
+  }
 }
