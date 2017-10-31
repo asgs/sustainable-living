@@ -41,10 +41,10 @@ public class EntryPoint {
       UserInputProcessor inputProcessor = getInputProcessorInstance();
       switch (userInput) {
         case "1":
-          inputProcessor.handleUser(buildUserDetails(inputStream));
+          inputProcessor.handleUserRegistration(buildUserDetails(inputStream));
           break;
         case "2":
-          inputProcessor.generateHomeEnergyConsumptionReport();
+          inputProcessor.generateHomeEnergyConsumptionReport(getUserId(inputStream));
           break;
         case "3":
           inputProcessor.handleGoals();
@@ -96,6 +96,13 @@ public class EntryPoint {
     Home home = new Home(houseName, resources);
     user.setHome(home);
     return user;
+  }
+
+  private String getUserId(BufferedReader reader) throws IOException {
+    System.out.println(
+        "Please enter your user id. we'll pull the energy "
+            + "consumption report for your house shortly.");
+    return reader.readLine();
   }
 
   private static void printWelcomeBanner() {

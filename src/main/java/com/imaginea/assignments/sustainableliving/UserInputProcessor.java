@@ -8,6 +8,10 @@ import com.imaginea.assignments.sustainableliving.model.User;
 
 import java.io.IOException;
 
+/**
+ * This is more of a facade to all of the operations that would be performed on the behalf of the
+ * user.
+ */
 public class UserInputProcessor {
 
   private UserManager userManager;
@@ -24,12 +28,12 @@ public class UserInputProcessor {
     this.sustainabilityGoalManager = sustainabilityGoalManager;
   }
 
-  public void handleUser(User user) throws IOException {
-    userManager.handleUser(user);
+  public void handleUserRegistration(User user) throws IOException {
+    userManager.registerUser(user);
   }
 
-  public void generateHomeEnergyConsumptionReport() {
-    System.out.println("Dummy userHome handling implementation.");
+  public void generateHomeEnergyConsumptionReport(String userId) throws IOException {
+    userManager.generateReportAsyncly(userId);
   }
 
   public void handleGoals() {

@@ -10,6 +10,8 @@ public class AlternateResource extends AbstractEnergyResource {
     this.type = type;
   }
 
+  public AlternateResource() {}
+
   @Override
   public ResourceConsumptionUnit getUnit() {
     return type.getUnit();

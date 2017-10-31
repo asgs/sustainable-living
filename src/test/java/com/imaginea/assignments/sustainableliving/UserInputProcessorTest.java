@@ -41,8 +41,8 @@ public class UserInputProcessorTest {
   @Test
   public void testHandleUser() throws IOException {
     User user = new User("sdf", "dsfdf");
-    processor.handleUser(user);
-    verify(userManager, times(1)).handleUser(userCaptor.capture());
+    processor.handleUserRegistration(user);
+    verify(userManager, times(1)).registerUser(userCaptor.capture());
     assertThat(userCaptor.getValue()).isEqualTo(user);
   }
 }
